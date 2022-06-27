@@ -1,5 +1,5 @@
 # Description
-An mdbook preprocessor which allows inline mathjax with the '$...$' delimeters.
+An mdbook preprocessor which allows inline mathjax with the '\$...\$' delimeters.
 Note, the implementation is pretty ad hoc and may not be very optimised.
 
 # Installation & Use
