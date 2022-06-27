@@ -1,0 +1,16 @@
+[package]
+name = "mdbook-inline-mathjax"
+license = "MIT"
+version = "0.1.0"
+edition = "2021"
+description = "An mdbook preprocessor which allows inline mathjax with the '$...$' delimeters."
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+mdbook = "0.4.18"
+clap = "3.2.6"
+serde = "1.0.137"
+serde_json = "1.0.81"
+fancy-regex = "0.10.0"
+semver = "1.0.10"
