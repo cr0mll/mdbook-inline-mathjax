@@ -4,6 +4,10 @@ license = "MIT"
 version = "0.1.0"
 edition = "2021"
 description = "An mdbook preprocessor which allows inline mathjax with the '$...$' delimeters."
+repository = "https://github.com/cr0mll/mdbook-inline-mathjax"
+categories = ["command-line-utilities", "accessibility", "mathematics", "parsing", "text-editors"]
+kewords = ["mdbook", "preprocessor", "mathjax", "latex"]
+readme = "README.md"
 
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
