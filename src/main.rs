@@ -85,10 +85,20 @@ mod mj_lib {
             // Match all '$' which are not preceded by a '\' or another '$', and which are not followed by a '$'
             // The latter is used to avoid matching '$$' blocks, which mdbook already supports.
             let inline_mathjax = Regex::new(r#"(?<!\\)(?<!\$)\$(?!\$)"#).expect("Failed regex!");
+
+            // Match '\{' and '\}' in order to replace them with '\\{' and '\\}' for proper mdbook rendering
+            let set_notation_open =  Regex::new(r#"\\{"#).expect("Failed regex!");
+            let set_notation_close =  Regex::new(r#"\\}"#).expect("Failed regex!");
+
             book.for_each_mut(|section: &mut mdbook::BookItem| {
                 if let mdbook::BookItem::Chapter(ref mut ch) = *section {
                     let mut i: u32 = 1;
                     let mut edited = String::from(&ch.content);
+                    
+                    // Replace \{ and \}
+                    edited = set_notation_open.replace_all(&edited, "\\\\{").to_string();
+                    edited = set_notation_close.replace_all(&edited, "\\\\}").to_string();
+
                     for m in inline_mathjax.find_iter(&ch.content) {
                         if let Ok(_) = m {
                             // If this is a beginning $, replace with \\(
@@ -103,6 +113,7 @@ mod mj_lib {
                             i+=1;
                         }
                     }
+
                     ch.content = edited;
                 }
             });
